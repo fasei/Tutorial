@@ -19,5 +19,5 @@ LIST_URL_RULER_SUFFIX = '.html'
 LIST_URL_RULER_LOOP = 13
 
 # 文章URL爬取规则XPATH
-POST_URL_XPATH = '//div[@class="article_list"]/ul/li/div/a/@href'
-# POST_URL_XPATH = '//div[@class="article_list"]/ul/li/span[1]/a[last()]/@href'
+# POST_URL_XPATH = '//div[@class="article_list"]/ul/li/div/a/@href'
+POST_URL_XPATH = '//div[@class="article_list"]/ul/li/span[1]/a[last()]/@href'
