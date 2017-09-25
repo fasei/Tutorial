@@ -3,7 +3,7 @@
 # Scrapy settings for DgSpider project
 
 # 图片储存
-IMAGES_STORE = 'D:\\pics'
+IMAGES_STORE = 'sss'
 
 # 爬取域名
 DOMAIN = 'eastlady.cn'
