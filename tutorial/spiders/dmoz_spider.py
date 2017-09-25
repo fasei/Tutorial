@@ -2,6 +2,15 @@ import scrapy
 from tutorial.items import DmozItem,DgspiderUrlItem
 from scrapy.selector import  Selector
 from tutorial.spiders import urlSetting
+
+# import os
+# print os.getcwd()#获得当前工作目录
+# print os.path.abspath('.')#获得当前工作目录
+# print os.path.abspath('..')#获得当前工作目录的父目录
+# print os.path.abspath(os.curdir)#获得当前工作目录
+
+
+
 #启动当前模块    Scrapy crawl DgUrlSpider
 class DmozSpider(scrapy.Spider):
 
@@ -52,7 +61,6 @@ class DmozSpider(scrapy.Spider):
         #list去重
         url_item=list(set(url_item))
         item_url['url']=url_item
-
         yield item_url
 
 
