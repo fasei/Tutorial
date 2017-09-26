@@ -88,3 +88,6 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# 在调用crapy crawl DgContentSpider -o all.json 写入的汉字的编码格式
+FEED_EXPORT_ENCODING = 'utf-8'
