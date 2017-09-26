@@ -27,7 +27,8 @@ class DgContentSpider(scrapy.Spider):
     for msg in mess:
         line = msg['url']
         for i in range(len(line)):
-            tmp_url_lists.append(line)
+            print(type(line[i]))
+            tmp_url_lists.append(line[i])
 
 
     # 爬虫名 必须静态指定
@@ -37,10 +38,11 @@ class DgContentSpider(scrapy.Spider):
     # 设定爬取域名范围
     allowed_domains = [contentSetting.DOMAIN]
 
+
     # 爬取地址
     # start_urls = ['http://www.mama.cn/baby/art/20140829/774422.html']
+    print(len(tmp_url_lists))
     start_urls = tmp_url_lists
-
     # start_urls_tmp = []
     # """构造分页序列，一般来说遵循规则 url.html,url_2.html,url_3.html，并且url.html也写为url_1.html"""
     # for i in range(6, 1, -1):
@@ -59,9 +61,7 @@ class DgContentSpider(scrapy.Spider):
         items['text'] = 'text'
 
 
-
-        yield scrapy.Request("lalalla", callback=self.parse)
-
+        yield items
         #
         # yield items
         # Request("Some_link_goes_here", callback=self.parse_link, meta={'l': items})
