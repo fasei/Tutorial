@@ -77,6 +77,7 @@ class DgContentSpider(scrapy.Spider):
 
     # 爬取方法
     def parse(self, response):
+
         print(response.url)
         items = DgspiderPostItem()
         sel = Selector(response)
