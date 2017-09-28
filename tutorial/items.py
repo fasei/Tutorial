@@ -29,3 +29,4 @@ class DgspiderPostItem(scrapy.Item):
     briefIntroduction=scrapy.Field()
     tag=scrapy.Field()
     text = scrapy.Field()
+    img=scrapy.Field()

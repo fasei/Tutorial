@@ -73,7 +73,7 @@ class DgContentSpider(scrapy.Spider):
     #     start_urls_tmp.append(start_single + "_" + str(i) + ".html")
 
     # 更新状态
-    """对于爬去网页，无论是否爬取成功都将设置status为1，避免死循环"""
+    """对于爬取网页，无论是否爬取成功都将设置status为1，避免死循环"""
 
     # 爬取方法
     def parse(self, response):
@@ -84,16 +84,16 @@ class DgContentSpider(scrapy.Spider):
         # XPATH获取url,注意 extract（）才能转成str字符串
         items['url'] = response.url
 
-        author = sel.xpath('//i[@class="writer ic6"]/text()').extract()
+        author = sel.xpath('//i[@class="writer ic6"]/text()')[0].extract()
         items['author'] = author
 
-        time = sel.xpath('//i[@class="time ic6"]/text()').extract()
+        time = sel.xpath('//i[@class="time ic6"]/text()')[0].extract()
         items['time'] = time
 
-        title = sel.xpath(contentSetting.POST_TITLE_XPATH).extract()
+        title = sel.xpath(contentSetting.POST_TITLE_XPATH)[0].extract()
         items['title'] = title
 
-        briefIntroduction = sel.xpath('//div[@class="articleI"]/text()').extract()
+        briefIntroduction = sel.xpath('//div[@class="articleI"]/text()')[0].extract()
         items['briefIntroduction'] = briefIntroduction
 
         tag = sel.xpath('//div[@class="articleTag w100a oh"]')[0].xpath('string(.)').extract()[0].replace('\n','').replace('标签：','').strip()
@@ -104,8 +104,25 @@ class DgContentSpider(scrapy.Spider):
         # items['text'] = text
 
         #string(.)仅获取文字性描述
-        text = sel.xpath(contentSetting.POST_CONTENT_XPATH)[0].xpath('string(.)').extract()
+        text = sel.xpath(contentSetting.POST_CONTENT_XPATH)[0].xpath('string(.)')[0].extract()
         items['text'] = text
+
+
+
+        img = sel.xpath('//div[@class="articleB"]/p/a').extract()
+
+        imgParams=[]
+        for i in range(len(img)):
+            d={}
+            imgLine=img[i].replace('</a>','</img></a>')
+            imgSelector=Selector(text=imgLine)
+            d['img_url']=imgSelector.xpath('//a/img/@src')[0].extract()
+            d['img_width'] = imgSelector.xpath('//a/img/@width')[0].extract()
+            d['img_height'] = imgSelector.xpath('//a/img/@height')[0].extract()
+            print(d)
+            imgParams.append(d)
+        print(imgParams)
+        items['img'] = imgParams
 
         print(items)
 
