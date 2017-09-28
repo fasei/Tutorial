@@ -18,5 +18,6 @@ CREATE_POST_USER = '37619,18441390'
 SPIDER_NAME = 'DgContentSpider'
 
 # 文章URL爬取规则XPATH
-POST_TITLE_XPATH = '//div[@class="title"]'
-POST_CONTENT_XPATH = '//div[@class="bodycss"]'
+POST_TITLE_XPATH = '//div[@class="articleT"]/h1/strong/text()'
+#POST_CONTENT_XPATH = '//div[@class="articleB"]/p/text()|//div[@class="articleB"]/p/u/text()|//div[@class="articleB"]/p/strong/text()|//div[@class="articleB"]/p/a'
+POST_CONTENT_XPATH = '//div[@class="articleB"]'

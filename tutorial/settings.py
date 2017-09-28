@@ -88,3 +88,15 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# 在调用crapy crawl DgContentSpider -o all.json 写入的汉字的编码格式
+FEED_EXPORT_ENCODING = 'utf-8'
+
+
+# 5、防屏蔽
+# 高频度的爬虫访问会影响服务器的性能，因此常常会被网站屏蔽。
+# 通过在setting.py文件中设置DOWNLOAD_DELAY参数，可以限制爬虫的访问频度。
+# DOWNLOAD_DELAY =0.25    # 250 ms of delay
+# 通过启用RANDOMIZE_DOWNLOAD_DELAY参数（默认为开启状态），
+# 可以使爬取时间间隔随机化，随机时长控制在0.5-1.5倍的DOWNLOAD_DELAY之间，
+# 这也可以降低爬虫被墙掉的几率。

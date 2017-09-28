@@ -23,5 +23,9 @@ class DgspiderUrlItem(scrapy.Item):
 
 class DgspiderPostItem(scrapy.Item):
     url = scrapy.Field()
+    author=scrapy.Field()
+    time=scrapy.Field()
     title = scrapy.Field()
+    briefIntroduction=scrapy.Field()
+    tag=scrapy.Field()
     text = scrapy.Field()
